@@ -1,1 +1,17 @@
 <h1>HELLO</h1>
+<script>
+const url = "https://api.steampowered.com/ISteamApps/GetServersAtAddress/v0002?addr=77.169.36.244:1339&format=json"
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });
+</script>
