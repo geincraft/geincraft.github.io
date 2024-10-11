@@ -5,7 +5,12 @@ async function main() {
     const url = "https://api.steampowered.com/ISteamApps/GetServersAtAddress/v0002?addr=77.169.36.244:1339&format=json"
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        );
 
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
