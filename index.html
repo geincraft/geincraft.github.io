@@ -1,17 +1,22 @@
 <h1>HELLO</h1>
 <script>
-const url = "https://api.steampowered.com/ISteamApps/GetServersAtAddress/v0002?addr=77.169.36.244:1339&format=json"
-fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok' + response.statusText);
+
+async function main() {
+    const url = "https://api.steampowered.com/ISteamApps/GetServersAtAddress/v0002?addr=77.169.36.244:1339&format=json"
+
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
     }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('There has been a problem with your fetch operation:', error);
-  });
+}
+
+main();
 </script>
